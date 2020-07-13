@@ -9,8 +9,10 @@
     "dependencies": {
         "express": "^4.17.1",
         "knex": "^0.21.2",
+        "node-pre-gyp": "^0.15.0",
         "pg": "^8.3.0",
-        "sqlite3": "^5.0.0"
+        "sqlite3": "^5.0.0",
+        "typescript": "^3.9.6"
     },
     "devDependencies": {
         "nodemon": "^2.0.4"
