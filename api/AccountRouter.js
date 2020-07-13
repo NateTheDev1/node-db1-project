@@ -4,8 +4,22 @@ const router = express();
 const db = require("../data/dbConfig.js");
 
 router.get("/", (req, res) => {
+  if (req.query.sortby !== undefined && req.query.sortdir !== undefined) {
+    db.select("*")
+      .from("accounts")
+      .orderBy(req.query.sortby, req.query.sortdir)
+      .limit(req.query.limit)
+      .then((accounts) => {
+        res.status(200).json({ data: accounts });
+      })
+      .catch((err) => {
+        handleErrors(err, res);
+      });
+  }
+
   db.select("*")
     .from("accounts")
+    .limit(req.query.limit)
     .then((accounts) => {
       res.status(200).json({ data: accounts });
     })
